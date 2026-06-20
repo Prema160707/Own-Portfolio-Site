@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prema | Full Stack Developer Portfolio</title>
+
+<!--
+  ================================================================
+  HOW TO CUSTOMIZE THIS PORTFOLIO (read me first!)
+  ================================================================
+  1. Search for "Prema" and replace with your own name everywhere.
+  2. Each section below is clearly marked with a comment like:
+      
+     Scroll to the section you want to change.
+  3. Tables are used for content. To ADD a new row (new skill, new
+     project, new certificate, etc.) just COPY one <tr>...</tr> block
+     inside that table and paste it above </table>, then edit the text.
+  4. To REMOVE an item, delete its <tr>...</tr> block.
+  5. All colors are defined once at the top inside :root so you can
+     re-theme the whole site by changing a handful of values.
+  6. Replace "#" links with your real LinkedIn / GitHub / Resume URLs.
+  7. Replace the 👨‍💻 avatar circle with a real photo by swapping the
+     emoji div for:  src="your-photo.jpg" class="avatar-img">
+  ================================================================
+-->
+
+<style>
+  :root{
+    /* ---------- EDIT: COLOR PALETTE ---------- */
+    --navy:        #14123B;
+    --navy-2:      #1E1B4B;
+    --indigo:      #4F46E5;
+    --indigo-dark: #3730A3;
+    --cyan:        #06B6D4;
+    --teal:        #0D9488;
+    --amber:       #F59E0B;
+    --pink:        #EC4899;
+    --rose:        #F43F5E;
+    --violet:      #8B5CF6;
+    --green:       #10B981;
+    --ink:         #1F2937;
+    --paper:       #FFFFFF;
+    --cream:       #FFFBEB;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+  }
+
+  h1,h2,h3,h4{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width:100%; display:block; }
+
+  /* ---------- TOP NAVIGATION ---------- */
+  .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--navy);
+    border-bottom: 4px solid var(--amber);
+    padding: 14px 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+  .navbar table{ width:100%; border-collapse: collapse; }
+  .navbar .brand{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+    font-family: Georgia, serif;
+  }
+  .navbar .brand span{ color: var(--amber); }
+  .nav-links{ text-align:right; }
+  .nav-links a{
+    display:inline-block;
+    color:#E5E7EB;
+    font-size:14px;
+    font-weight:600;
+    padding:8px 10px;
+    margin:2px;
+    border-radius: 20px;
+    transition: 0.2s;
+  }
+  .nav-links a:hover{ background: var(--indigo); color:#fff; }
+
+  /* ---------- GENERIC SECTION WRAPPER ---------- */
+  .section{
+    padding: 60px 16px;
+  }
+  .section-inner{
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title{
+    text-align:center;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .section-subtitle{
+    text-align:center;
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 36px;
+  }
+  .pill{
+    display:inline-block;
+    background: rgba(255,255,255,0.18);
+    border:1px solid rgba(255,255,255,0.4);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* content tables shared look */
+  table.content-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+  table.content-table th{
+    text-align:left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    opacity: 0.85;
+  }
+  table.content-table td{
+    background: rgba(255,255,255,0.92);
+    color: var(--ink);
+    padding: 14px 16px;
+    vertical-align: top;
+    font-size: 14.5px;
+  }
+  table.content-table tr td:first-child{ border-radius: 10px 0 0 10px; }
+  table.content-table tr td:last-child{ border-radius: 0 10px 10px 0; }
+
+  .tag{
+    display:inline-block;
+    background: var(--indigo);
+    color:#fff;
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin: 2px 4px 2px 0;
+  }
+  .btn{
+    display:inline-block;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 4px 6px;
+  }
+  .btn-amber{ background: var(--amber); color:#1F2937; }
+  .btn-outline{ background: transparent; border:2px solid #fff; color:#fff; }
+  .btn-cyan{ background: var(--cyan); color:#062; color:#08323A; }
+  .btn-pink{ background: var(--pink); color:#fff; }
+
+  /* skill bar */
+  .bar-bg{
+    background: rgba(0,0,0,0.12);
+    border-radius: 8px;
+    height: 14px;
+    width: 100%;
+    overflow:hidden;
+  }
+  .bar-fill{
+    height: 100%;
+    border-radius: 8px;
+  }
+
+  /* ================= HOME / HERO ================= */
+  #home{
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--indigo-dark) 100%);
+    color: #fff;
+    padding: 70px 16px 80px;
+    text-align:center;
+  }
+  .avatar{
+    width: 150px; height:150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--amber), var(--pink));
+    display:flex; align-items:center; justify-content:center;
+    font-size: 64px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 0 6px rgba(255,255,255,0.15);
+  }
+  #home h1{ font-size: 40px; margin-bottom: 6px; }
+  #home .role{
+    font-size: 18px;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  #home .tagline{
+    max-width: 640px;
+    margin: 0 auto 24px;
+    color: #D1D5DB;
+    font-size: 15.5px;
+  }
+  .hero-stats{ width:100%; max-width: 640px; margin: 30px auto 0; border-collapse: collapse;}
+  .hero-stats td{
+    text-align:center;
+    padding: 14px 8px;
+  }
+  .hero-stats .num{ font-size: 26px; font-weight:800; color: var(--cyan); }
+  .hero-stats .label{ font-size: 12px; color:#cbd5e1; text-transform: uppercase; letter-spacing:0.5px;}
+
+  /* ================= ABOUT ================= */
+  #about{ background: linear-gradient(135deg, #E0F2FE 0%, #CFFAFE 100%); }
+  #about .section-title, #about .section-subtitle{ color: #075985; }
+  #about .about-table{ width:100%; border-collapse: collapse; }
+  #about .about-table td{ vertical-align: top; padding: 10px; }
+  #about .bio-card{
+    background: #fff;
+    border-left: 6px solid var(--cyan);
+    border-radius: 10px;
+    padding: 22px 24px;
+    font-size: 15px;
+    color: var(--ink);
+    box-shadow: 0 6px 18px rgba(8,145,178,0.15);
+  }
+  .facts-table{ width:100%; border-collapse: separate; border-spacing:0 8px; }
+  .facts-table td{ padding: 10px 14px; background:#fff; font-size: 14px; }
+  .facts-table td.k{ font-weight:700; color: var(--teal); width: 38%; border-radius: 8px 0 0 8px; }
+  .facts-table td.v{ border-radius: 0 8px 8px 0; }
+
+  /* ================= EDUCATION ================= */
+  #education{ background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); }
+  #education .section-title, #education .section-subtitle{ color: #92400E; }
+  #education table.content-table th{ color:#92400E; }
+  #education td{ border-left: 5px solid var(--amber); }
+
+  /* ================= TECH SKILLS ================= */
+  #tech-skills{ background: linear-gradient(135deg, #312E81 0%, #4338CA 50%, #4F46E5 100%); color:#fff; }
+  #tech-skills .section-subtitle{ color:#E0E7FF; }
+  .skills-grid{ width:100%; border-collapse: separate; border-spacing: 14px; }
+  .skills-grid td{
+    background: rgba(255,255,255,0.97);
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 16px;
+    width: 25%;
+  }
+  .skills-grid .sk-name{ font-weight:700; font-size:14.5px; margin-bottom:8px; display:flex; justify-content:space-between;}
+
+  /* ================= SOFT SKILLS ================= */
+  #soft-skills{ background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); }
+  #soft-skills .section-title, #soft-skills .section-subtitle{ color:#9D174D; }
+  .softskill-grid{ width:100%; border-collapse: separate; border-spacing:14px; }
+  .softskill-grid td{
+    background:#fff;
+    border-radius: 12px;
+    padding: 18px 10px;
+    text-align:center;
+    font-weight:700;
+    font-size:14px;
+    color: var(--ink);
+    border-top: 5px solid var(--pink);
+    width: 20%;
+  }
+  .softskill-grid .emoji{ font-size: 30px; display:block; margin-bottom:8px; }
+
+  /* ================= CERTIFICATIONS ================= */
+  #certifications{ background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); }
+  #certifications .section-title, #certifications .section-subtitle{ color:#065F46; }
+  #certifications table.content-table th{ color:#065F46; }
+  #certifications td{ border-left: 5px solid var(--green); }
+
+  /* ================= INTERNSHIP ================= */
+  #internship{ background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%); color:#fff; }
+  #internship .section-subtitle{ color:#DBEAFE; }
+  .intern-card{
+    background: rgba(255,255,255,0.97);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    border-top: 6px solid var(--cyan);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+  .intern-card h3{ color: var(--indigo-dark); font-size:19px; }
+  .intern-card .meta{ font-size: 13px; color:#475569; margin: 4px 0 10px; }
+  .intern-card ul{ margin: 10px 0 0 20px; font-size: 14px; }
+  .intern-card li{ margin-bottom: 4px; }
+
+  /* ================= PROJECTS ================= */
+  #projects{ background: linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%); color:#fff; }
+  #projects .section-subtitle{ color:#EDE9FE; }
+  table.projects-table{ width:100%; border-collapse: separate; border-spacing: 0 18px; }
+  table.projects-table td{
+    background: rgba(255,255,255,0.97);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 20px 22px;
+    vertical-align: top;
+  }
+  table.projects-table tr td{ border-left: 6px solid var(--violet); border-radius: 10px; }
+  .proj-name{ font-size: 18px; font-weight:800; color: var(--violet); margin-bottom: 4px;}
+  .proj-desc{ font-size: 14px; color:#374151; margin-bottom:10px; }
+  .proj-links a{ font-size:13px; font-weight:700; margin-right:14px; color: var(--indigo-dark); }
+  .proj-links a:hover{ text-decoration: underline; }
+
+  /* ================= ACHIEVEMENTS ================= */
+  #achievements{ background: linear-gradient(135deg, #7C2D12 0%, #C2410C 45%, #F97316 100%); color:#fff; }
+  #achievements .section-subtitle{ color:#FFEDD5; }
+  table.content-table.achieve td{ border-left: 5px solid var(--amber); }
+  #achievements table.content-table th{ color:#FFEDD5; }
+
+  /* ================= RESUME ================= */
+  #resume{
+    background: linear-gradient(135deg, #042F2E 0%, #0F766E 60%, #0D9488 100%);
+    color:#fff;
+    text-align:center;
+  }
+  #resume .section-subtitle{ color:#CCFBF1; }
+  .resume-box{
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,255,255,0.5);
+    border-radius: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 34px 26px;
+  }
+
+  /* ================= CONTACT ================= */
+  #contact{ background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color:#fff; }
+  #contact .section-subtitle{ color:#CBD5E1; }
+  #contact table.content-table td{ border-left: 5px solid var(--cyan); }
+  #contact table.content-table th{ color:#94A3B8; }
+
+  /* ================= SOCIAL ================= */
+  #social{
+    background: linear-gradient(90deg, var(--indigo) 0%, var(--violet) 25%, var(--pink) 50%, var(--rose) 75%, var(--amber) 100%);
+    color:#fff;
+    text-align:center;
+    padding-bottom: 70px;
+  }
+  .social-grid{ width:100%; max-width: 760px; margin:0 auto; border-collapse: separate; border-spacing:14px; }
+  .social-grid td{
+    background: rgba(0,0,0,0.22);
+    border-radius: 12px;
+    padding: 18px 6px;
+    font-weight:700;
+    font-size: 14px;
+  }
+  .social-grid .emoji{ font-size: 28px; display:block; margin-bottom:6px; }
+  .social-grid td:hover{ background: rgba(0,0,0,0.4); }
+
+  /* ================= FOOTER ================= */
+  footer{
+    background: var(--navy);
+    color:#9CA3AF;
+    text-align:center;
+    padding: 22px 12px;
+    font-size: 13px;
+  }
+  footer span{ color: var(--amber); }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 800px){
+    .skills-grid td, .softskill-grid td{ display:block; width:100% !important; margin-bottom:10px; }
+    .skills-grid, .softskill-grid{ border-spacing: 0; }
+    .skills-grid tr, .softskill-grid tr{ display:block; }
+    .navbar .brand{ display:block; text-align:center; margin-bottom:8px; }
+    .nav-links{ text-align:center; }
+    table.content-table, table.content-table tbody, table.content-table tr, table.content-table td{
+      display:block; width:100%;
+    }
+    table.content-table tr{ margin-bottom: 10px; }
+    table.content-table tr td{ border-radius: 10px !important; margin-bottom:4px; }
+    .navbar table, .navbar tbody, .navbar tr, .navbar td{ display:block; width:100%; }
+    #home h1{ font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================================================== -->
+<!-- ====== NAVIGATION BAR ====== -->
+<!-- ====================================================== -->
+<nav class="navbar">
+  <table>
+    <tr>
+      <td class="brand">⚡ Prema<span>.M</span></td>
+      <td class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#tech-skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#internship">Internship</a>
+        <a href="#certifications">Certs</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </td>
+    </tr>
+  </table>
+</nav>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: HOME / HERO SECTION ====== -->
+<!-- ====================================================== -->
+<section id="home" class="section">
+  <div class="section-inner">
+    <!-- Replace this emoji avatar with <img src="photo.jpg" class="avatar-img"> for a real photo -->
+    <div class="avatar">👨‍💻</div>
+    <h1>Hi, I'm Prema 👋</h1>
+    <div class="role">🚀 Full Stack Developer &nbsp;|&nbsp; 🎓 B.Tech AIDS Student &nbsp;|&nbsp; 💡 Tech Enthusiast</div>
+    <p class="tagline">
+      I build clean, responsive, and user-friendly web applications using modern
+      technologies like React, Node.js, and MongoDB. Passionate about solving real-world
+      problems through code and always eager to learn something new. ✨
+    </p>
+    <a href="#projects" class="btn btn-amber">🔭 View My Projects</a>
+    <a href="#resume" class="btn btn-outline">📄 Download Resume</a>
+    <a href="#contact" class="btn btn-outline">📬 Contact Me</a>
+
+    <table class="hero-stats">
+      <tr>
+        <td><div class="num">5+</div><div class="label">Projects Built</div></td>
+        <td><div class="num">3</div><div class="label">Certifications</div></td>
+        <td><div class="num">1</div><div class="label">Internship</div></td>
+        <td><div class="num">10+</div><div class="label">Tech Skills</div></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: ABOUT ME SECTION ====== -->
+<!-- ====================================================== -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <span class="pill" style="background:rgba(8,145,178,0.15); border-color:#06b6d4; color:#075985;">Get to know me</span>
+    </div>
+    <h2 class="section-title">🙋 About Me</h2>
+    <p class="section-subtitle">A quick introduction to who I am and what drives me</p>
+
+    <table class="about-table">
+      <tr>
+        <td style="width:58%;">
+          <div class="bio-card">
+            <p>
+              I'm a Second-year AIDS student with a strong passion for
+              <b>full stack web development</b>. I love turning ideas into functional,
+              good-looking applications — from designing the UI to building the backend
+              logic and database that powers it. <br><br>
+              Over the past two years I've worked on personal projects, a startup
+              internship, and several hackathons, constantly sharpening my skills in
+              JavaScript, React, and Node.js. When I'm not coding, you'll find me
+              exploring new frameworks, contributing to open source, or mentoring
+              juniors in my college coding club. 🌱<br><br>
+              <i>Replace this paragraph with your own story — your journey, your
+              interests, and what makes you, you!</i>
+            </p>
+          </div>
+        </td>
+        <td style="width:42%;">
+          <table class="facts-table">
+            <tr><td class="k">🎯 Role</td><td class="v">Full Stack Developer (Student)</td></tr>
+            <tr><td class="k">📍 Location</td><td class="v">Chennai, Tamil Nadu, India</td></tr>
+            <tr><td class="k">🎂 Age</td><td class="v">19 Years</td></tr>
+            <tr><td class="k">🗣️ Languages</td><td class="v">English,Tamil</td></tr>
+            <tr><td class="k">🎮 Hobbies</td><td class="v">Coding, Gaming, Reading Tech Blogs</td></tr>
+            <tr><td class="k">🎯 Open To</td><td class="v">Internships &amp; Full-time Roles</td></tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: EDUCATION SECTION (add/remove <tr> rows) ====== -->
+<!-- ====================================================== -->
+<section id="education" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">🎓 Education</h2>
+    <p class="section-subtitle">My academic journey so far</p>
+
+    <table class="content-table">
+      <tr>
+        <th style="width:28%;">Qualification</th>
+        <th style="width:30%;">Institution</th>
+        <th style="width:17%;">Year</th>
+        <th style="width:25%;">Score</th>
+      </tr>
+      <!-- COPY a <tr> below this line to add a new education entry -->
+      <tr>
+        <td>🎓 B.Tech, AIDS &amp; Engineering</td>
+        <td>Agni College of Technology</td>
+        <td>2024 – Present</td>
+        <td>CGPA: 9.1 / 10</td>
+      </tr>
+      <tr>
+        <td>🏫 Higher Secondary (12th Grade)</td>
+        <td>SJMH Secondary School</td>
+        <td>2022 – 2024</td>
+        <td>92.4%</td>
+      </tr>
+      <tr>
+        <td>🏫 Secondary School (10th Grade)</td>
+        <td>Jothi Primary School</td>
+        <td>2013 – 2022</td>
+        <td>90.0%</td>
+      </tr>
+      <!-- ====== add more rows here ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: TECHNICAL SKILLS (10+ skills, easy to edit) ====== -->
+<!-- ====================================================== -->
+<section id="tech-skills" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">💻 Technical Skills</h2>
+    <p class="section-subtitle">Languages, frameworks &amp; tools I work with</p>
+
+    <!-- 4 columns x N rows. Copy a <td> block to add a new skill. -->
+    <table class="skills-grid">
+      <tr>
+        <td>
+          <div class="sk-name">🟧 HTML5 <span>90%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:90%; background:var(--amber);"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🟦 CSS3 <span>85%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:85%; background:var(--indigo);"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🟨 JavaScript <span>85%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:85%; background:#EAB308;"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">⚛️ React.js <span>80%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%; background:var(--cyan);"></div></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="sk-name">🟩 Node.js <span>78%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:78%; background:var(--green);"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🚂 Express.js <span>75%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:75%; background:#6B7280;"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🍃 MongoDB <span>75%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:75%; background:var(--green);"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🗄️ MySQL <span>70%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:70%; background:#0EA5E9;"></div></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="sk-name">🐍 Python <span>72%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:72%; background:#3B82F6;"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">☕ Java <span>65%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:65%; background:#EA580C;"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🔧 Git &amp; GitHub <span>85%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:85%; background:#1F2937;"></div></div>
+        </td>
+        <td>
+          <div class="sk-name">🔗 REST APIs <span>80%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%; background:var(--pink);"></div></div>
+        </td>
+      </tr>
+      <!-- ====== add more <td> skill blocks here, 4 per row ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: SOFT SKILLS ====== -->
+<!-- ====================================================== -->
+<section id="soft-skills" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">🤝 Soft Skills</h2>
+    <p class="section-subtitle">What makes me a great teammate, beyond the code</p>
+
+    <table class="softskill-grid">
+      <tr>
+        <td><span class="emoji">🗣️</span>Communication</td>
+        <td><span class="emoji">👥</span>Teamwork</td>
+        <td><span class="emoji">🧩</span>Problem Solving</td>
+        <td><span class="emoji">⏰</span>Time Management</td>
+        <td><span class="emoji">🔄</span>Adaptability</td>
+      </tr>
+      <tr>
+        <td><span class="emoji">🎯</span>Leadership</td>
+        <td><span class="emoji">💡</span>Creativity</td>
+        <td><span class="emoji">📚</span>Eagerness to Learn</td>
+        <td><span class="emoji">🧠</span>Critical Thinking</td>
+        <td><span class="emoji">🤲</span>Empathy</td>
+      </tr>
+      <!-- ====== add more <td> blocks here, 5 per row ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: CERTIFICATIONS (add/remove <tr> rows) ====== -->
+<!-- ====================================================== -->
+<section id="certifications" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">📜 Certifications</h2>
+    <p class="section-subtitle">Courses &amp; certifications I've completed</p>
+
+    <table class="content-table">
+      <tr>
+        <th style="width:34%;">Certificate</th>
+        <th style="width:26%;">Issued By</th>
+        <th style="width:18%;">Date</th>
+        <th style="width:22%;">Credential</th>
+      </tr>
+      <tr>
+        <td>🌐 Full Stack Web Development</td>
+        <td>Coursera / Meta</td>
+        <td>Jan 2025</td>
+        <td><a href="#" style="color:var(--indigo); font-weight:700;">View Credential ↗</a></td>
+      </tr>
+      <tr>
+        <td>☁️ AWS Cloud Practitioner</td>
+        <td>Amazon Web Services</td>
+        <td>Mar 2025</td>
+        <td><a href="#" style="color:var(--indigo); font-weight:700;">View Credential ↗</a></td>
+      </tr>
+      <tr>
+        <td>🐍 Python for Data Science</td>
+        <td>IBM / edX</td>
+        <td>Jul 2024</td>
+        <td><a href="#" style="color:var(--indigo); font-weight:700;">View Credential ↗</a></td>
+      </tr>
+      <tr>
+        <td>🧮 Data Structures &amp; Algorithms</td>
+        <td>GeeksforGeeks</td>
+        <td>Nov 2024</td>
+        <td><a href="#" style="color:var(--indigo); font-weight:700;">View Credential ↗</a></td>
+      </tr>
+      <!-- ====== add more certification rows here ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: INTERNSHIP EXPERIENCE (copy .intern-card to add more) ====== -->
+<!-- ====================================================== -->
+<section id="internship" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">💼 Internship Experience</h2>
+    <p class="section-subtitle">Hands-on experience working on real-world products</p>
+
+    <div class="intern-card">
+      <h3>🚀 Full Stack Developer Intern — TechNova Solutions</h3>
+      <div class="meta">📅 May 2025 – Jul 2025 &nbsp;|&nbsp; 📍 Remote</div>
+      <ul>
+        <li>Developed and maintained REST APIs using Node.js &amp; Express, serving 1,000+ daily requests.</li>
+        <li>Built reusable React components, improving page load speed by 30%.</li>
+        <li>Collaborated with a team of 5 developers using Agile/Scrum methodology and Git.</li>
+        <li>Wrote unit tests and fixed 20+ bugs reported during QA cycles.</li>
+      </ul>
+    </div>
+
+    <div class="intern-card">
+      <h3>🎨 Frontend Developer Intern — PixelCraft Studio</h3>
+      <div class="meta">📅 Dec 2024 – Feb 2025 &nbsp;|&nbsp; 📍 Hybrid – Chennai</div>
+      <ul>
+        <li>Converted Figma designs into responsive HTML/CSS/JS web pages.</li>
+        <li>Worked closely with the design team to improve UI consistency across the product.</li>
+        <li>Optimized website performance, reducing load time from 4.2s to 2.1s.</li>
+      </ul>
+    </div>
+
+    <!-- ====== copy a .intern-card block above to add another internship ====== -->
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: PROJECTS (at least 5 — copy a <tr> to add more) ====== -->
+<!-- ====================================================== -->
+<section id="projects" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">🛠️ Projects</h2>
+    <p class="section-subtitle">A few things I've built and shipped</p>
+
+    <table class="projects-table">
+      <tr>
+        <td>
+          <div class="proj-name">🛒 E-Commerce Web App</div>
+          <div class="proj-desc">A full-featured online store with product listing, cart, checkout, and an admin dashboard built using the MERN stack.</div>
+          <div>
+            <span class="tag">React</span><span class="tag">Node.js</span>
+            <span class="tag">Express</span><span class="tag">MongoDB</span>
+          </div>
+          <div class="proj-links">
+            <a href="#">🔗 Live Demo</a><a href="#">💻 GitHub Repo</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="proj-name">✅ Task Manager App</div>
+          <div class="proj-desc">A drag-and-drop kanban-style task management tool with authentication, deadlines, and progress tracking.</div>
+          <div>
+            <span class="tag">React</span><span class="tag">Firebase</span>
+            <span class="tag">Tailwind CSS</span>
+          </div>
+          <div class="proj-links">
+            <a href="#">🔗 Live Demo</a><a href="#">💻 GitHub Repo</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="proj-name">🌦️ Weather Forecast App</div>
+          <div class="proj-desc">Real-time weather application using a public API, showing current conditions and a 5-day forecast with dynamic backgrounds.</div>
+          <div>
+            <span class="tag">JavaScript</span><span class="tag">REST API</span>
+            <span class="tag">CSS3</span>
+          </div>
+          <div class="proj-links">
+            <a href="#">🔗 Live Demo</a><a href="#">💻 GitHub Repo</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="proj-name">📝 Blog Platform with CMS</div>
+          <div class="proj-desc">A full stack blogging platform with markdown support, comments, and a custom content management dashboard.</div>
+          <div>
+            <span class="tag">Next.js</span><span class="tag">MongoDB</span>
+            <span class="tag">Node.js</span>
+          </div>
+          <div class="proj-links">
+            <a href="#">🔗 Live Demo</a><a href="#">💻 GitHub Repo</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="proj-name">💬 Real-Time Chat Application</div>
+          <div class="proj-desc">A real-time messaging app with private rooms, typing indicators, and online status using WebSockets.</div>
+          <div>
+            <span class="tag">Socket.io</span><span class="tag">Express</span>
+            <span class="tag">React</span>
+          </div>
+          <div class="proj-links">
+            <a href="#">🔗 Live Demo</a><a href="#">💻 GitHub Repo</a>
+          </div>
+        </td>
+      </tr>
+      <!-- ====== copy a <tr><td>...</td></tr> block above to add another project ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: ACHIEVEMENTS (add/remove <tr> rows) ====== -->
+<!-- ====================================================== -->
+<section id="achievements" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">🏆 Achievements</h2>
+    <p class="section-subtitle">Milestones I'm proud of</p>
+
+    <table class="content-table achieve">
+      <tr>
+        <th style="width:10%;">🏅</th>
+        <th style="width:55%;">Achievement</th>
+        <th style="width:20%;">Issued By</th>
+        <th style="width:15%;">Year</th>
+      </tr>
+      <tr>
+        <td>🥇</td>
+        <td>1st Place — National Level Hackathon "CodeStorm 2025"</td>
+        <td>CodeStorm Org</td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td>🌟</td>
+        <td>Top 50 out of 5,000+ participants — Smart India Hackathon</td>
+        <td>Govt. of India</td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td>🎓</td>
+        <td>Awarded Merit Scholarship for Academic Excellence</td>
+        <td>Agni College of Technology</td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td>💻</td>
+        <td>Solved 300+ problems on LeetCode &amp; HackerRank</td>
+        <td>Self-paced</td>
+        <td>2025 – Present</td>
+      </tr>
+      <!-- ====== add more achievement rows here ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: RESUME ====== -->
+<!-- ====================================================== -->
+<section id="resume" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">📄 Resume</h2>
+    <p class="section-subtitle">Get a complete overview of my journey, skills &amp; experience</p>
+
+    <div class="resume-box">
+      <p style="margin-bottom:18px; font-size:15px;">
+        Want the full picture? Download my latest resume in PDF format below.
+      </p>
+      <!-- Replace "resume.pdf" with the path/link to your actual resume file -->
+      <a href="resume.pdf" download class="btn btn-amber">⬇️ Download Resume (PDF)</a>
+      <a href="resume.pdf" target="_blank" class="btn btn-outline">👁️ View Online</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: CONTACT INFORMATION ====== -->
+<!-- ====================================================== -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">📬 Contact Information</h2>
+    <p class="section-subtitle">Let's connect — I'd love to hear from you</p>
+
+    <table class="content-table">
+      <tr>
+        <td style="width:25%;">📧 <b>Email</b></td>
+        <td><a href="mailto:Prema.M@gmail.com">Prema.M@gmail.com</a></td>
+      </tr>
+      <tr>
+        <td>📱 <b>Phone</b></td>
+        <td><a href="tel:+918825753345">+91 88257 53345</a></td>
+      </tr>
+      <tr>
+        <td>📍 <b>Location</b></td>
+        <td>Chennai, Tamil Nadu, India</td>
+      </tr>
+      <tr>
+        <td>🟢 <b>Availability</b></td>
+        <td>Open to Internships &amp; Full-Time Opportunities (2026)</td>
+      </tr>
+      <tr>
+        <td>🌐 <b>Portfolio</b></td>
+        <td><a href="#">www.Prema.M</a></td>
+      </tr>
+      <!-- ====== add more contact rows here ====== -->
+    </table>
+  </div>
+</section>
+
+<!-- ====================================================== -->
+<!-- ====== EDIT: SOCIAL MEDIA LINKS ====== -->
+<!-- ====================================================== -->
+<section id="social" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">🌐 Social Media &amp; Profiles</h2>
+    <p class="section-subtitle" style="color:#fff;">Find me across the web</p>
+
+    <table class="social-grid">
+      <tr>
+        <td><a href="#"><span class="emoji">💼</span>LinkedIn</a></td>
+        <td><a href="#"><span class="emoji">🐙</span>GitHub</a></td>
+        <td><a href="#"><span class="emoji">🐦</span>Twitter / X</a></td>
+        <td><a href="#"><span class="emoji">📷</span>Instagram</a></td>
+      </tr>
+      <tr>
+        <td><a href="#"><span class="emoji">🧩</span>LeetCode</a></td>
+        <td><a href="#"><span class="emoji">📌</span>HackerRank</a></td>
+        <td><a href="#"><span class="emoji">📝</span>Dev.to / Blog</a></td>
+        <td><a href="mailto:Prema.M@gmail.com"><span class="emoji">✉️</span>Email Me</a></td>
+      </tr>
+      <!-- ====== add more <td><a> blocks here, 4 per row ====== -->
+    </table>
+  </div>
+</section>
+
+<footer>
+  Made with 💙 by <span>Prema</span> &nbsp;|&nbsp; &copy; 2026 All Rights Reserved
+</footer>
+
+</body>
+</html>
